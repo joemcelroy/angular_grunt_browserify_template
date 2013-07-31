@@ -18,9 +18,20 @@ module.exports = function(grunt) {
           paths: ["less"]
         },
         files: {
-          "dist/css/screen.css": "resources/less/screen.less"
+          "dist/css/screen.css": "resources/less/import.less"
         }
       }  
+    },
+
+    concat: {
+      build: {
+        src: [
+          'resources/js/jquery.js',
+          'resources/js/angular.min.js',
+          'resources/js/angular-ui-router.min.js'
+        ],
+        dest: 'dist/js/vendor.js'
+      }
     },
 
     html2js: {
@@ -51,7 +62,7 @@ module.exports = function(grunt) {
         },
 
         less: {
-          files: ["resources/less/screen.less"],
+          files: ["resources/less/import.less"],
           tasks: ['less']
         },
 
@@ -68,7 +79,7 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.registerTask('build', ['clean', 'less', 'html2js', 'browserify']);
+  grunt.registerTask('build', ['clean', 'concat', 'less', 'html2js', 'browserify']);
   grunt.registerTask('watchAll', ['build', 'watch'])
 
 };
