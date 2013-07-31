@@ -1,0 +1,5 @@
+- install npm & node
+- install grunt-cli : sudo npm install -g grunt-cli
+- cd into project
+- install grunt dependancies: npm install
+- run grunt: grunt watchAll
