@@ -5,6 +5,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-karma');
+
   grunt.loadTasks('grunt-tasks');
 
   grunt.initConfig({
@@ -21,6 +23,19 @@ module.exports = function(grunt) {
           "dist/css/screen.css": "resources/less/import.less"
         }
       }  
+    },
+
+    karma: {
+      options: {
+        configFile: 'test/config/karma.js'
+      },
+      unit: {
+        singleRun: true
+      },
+      background: {
+        background: true,
+        browsers: [ grunt.option('browser') || 'PhantomJS' ]
+      }
     },
 
     concat: {
@@ -63,7 +78,12 @@ module.exports = function(grunt) {
 
         js: {
           files: ["src/**/*.js"],
-          tasks:['browserify']
+          tasks:['browserify','karma:background:run']
+        },
+
+        tests: {
+          files:["test/unit/*.js"],
+          tasks:['karma:background:run']
         },
 
         less: {
@@ -85,6 +105,6 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('build', ['clean', 'concat', 'less', 'html2js', 'browserify']);
-  grunt.registerTask('watchAll', ['build', 'watch'])
+  grunt.registerTask('watchAll', ['build','karma:background', 'watch'])
 
 };

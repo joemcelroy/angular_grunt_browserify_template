@@ -3,3 +3,4 @@
 - cd into project
 - install grunt dependancies: npm install
 - run grunt: grunt watchAll
+- open a browser with the url: http://localhost:8080/. This allows karma to execute the tests on this browser window.

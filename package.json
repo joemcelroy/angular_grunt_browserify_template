@@ -18,6 +18,8 @@
     "grunt-contrib": "~0.6.x",
     "grunt-contrib-watch": "*",
     "grunt-html2js": "~0.1.6",
-    "grunt-browserify": "~1.2.1"
+    "grunt-browserify": "~1.2.1",
+    "grunt-karma": "~0.4.3"
+
   }
 }
