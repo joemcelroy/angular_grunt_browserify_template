@@ -61,6 +61,11 @@ module.exports = function(grunt) {
           nospawn:true
         },
 
+        js: {
+          files: ["src/**/*.js"],
+          tasks:['browserify']
+        },
+
         less: {
           files: ["resources/less/import.less"],
           tasks: ['less']

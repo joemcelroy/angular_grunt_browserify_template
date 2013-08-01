@@ -1,7 +1,5 @@
+require("./core")
 require("./login");
 require("./floorplanner");
-require("./routes");
 
-console.log("hello");
-
-angular.module('opentable', ['templates-development']);
+angular.module('opentable', ['templates-development', 'core', 'login', 'floorplanner']);
